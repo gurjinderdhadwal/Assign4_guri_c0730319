@@ -30,25 +30,25 @@ namespace Assign4_guri_c0730319
         public void ReadTextFiles()
         {
             // Read file using StreamReader. Read file line by line
-            using (StreamReader file = new StreamReader("Beowulf.txt"))
+            using (StreamReader file = new StreamReader("U:/Users/730319/Assign4_guri_c0730319/Assign4_guri_c0730319/Beowulf.txt"))
 
             {
 
                 int counter = 0;
                 string ln;
-                string words;
+
                 while ((ln = file.ReadLine()) != null)
                 {
                     Console.WriteLine(ln);
                 }
                 file.Close();
-                counter = File.ReadLines("Beowulf.txt").Count();
+                counter = File.ReadLines("U:/Users/730319/Assign4_guri_c0730319/Assign4_guri_c0730319/Beowulf.txt").Count();
                 Console.WriteLine("\n\n\nThe file has " + counter + " lines");
             }
         }
         public int FindNumberOfBlankSpaces(string line)
         {
-            https://stackoverflow.com/questions/17812566/count-words-and-spaces-in-string-c-sharp
+
             int countletters = 0;
             int countSpaces = 0;
 
