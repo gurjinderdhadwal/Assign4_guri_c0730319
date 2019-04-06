@@ -20,11 +20,13 @@ namespace Assign4_guri_c0730319
 
         {
 
+
+
             Program p = new Program();
 
             p.Beowulf = new ArrayList();
 
-            p.Wordfinder();
+            p.Wordskipper();
 
             Console.ReadLine();
 
@@ -190,11 +192,13 @@ namespace Assign4_guri_c0730319
 
             {
 
+                f++;
+
                 if (line.Contains("sea") && line.Contains("fare"))
 
                 {
 
-                    f++;
+                    Console.WriteLine(f);
 
                 }
 
@@ -202,9 +206,63 @@ namespace Assign4_guri_c0730319
 
             }
 
-            Console.WriteLine(f);
+        }
+
+        public void Wordskipper()
+
+        {
+
+            int f = 0;
+
+            foreach (var line in File.ReadAllLines("U:/Users/730319/Assign4_guri_c0730319/Assign4_guri_c0730319/Beowulf.txt"))
+
+            {
+
+                f++;
+
+                if (line.Contains("fare") && (!line.Contains("war")))
+
+                {
+
+                    Console.WriteLine(f);
+
+                }
+
+
+
+            }
+
+
 
         }
+
+        public void Letters()
+
+        {
+
+
+
+            StreamReader reader = new StreamReader("U:/Users/730319/Assign4_guri_c0730319/Assign4_guri_c0730319/Beowulf.txt");
+
+            string script = reader.ReadToEnd();
+
+            int numberOfLetters = 0;
+
+            foreach (char letter in script)
+
+            {
+
+                numberOfLetters++;
+
+            }
+
+            Console.WriteLine(numberOfLetters);
+
+
+
+        }
+
+
 
     }
 
