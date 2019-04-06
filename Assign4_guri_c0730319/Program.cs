@@ -63,41 +63,35 @@ namespace Assign4_guri_c0730319
 
         }
 
-    }
-    public void CountLinesReader()
-    {
-        long lineCounter = 0;
-        using (StreamReader fil = new StreamReader("Beowulf.txt"))
+        public long TotalWords()
         {
-            while (fil.ReadLine() != null)
+
+            StreamReader reader = new StreamReader("Beowulf.txt");
+            string script = reader.ReadToEnd();
+
+            var text = script.Trim();
+            long wordCount = 0;
+            int index = 0;
+
+            while (index < text.Length)
             {
-                lineCounter++;
+                // check if current char is part of a word
+                while (index < text.Length && !char.IsWhiteSpace(text[index]))
+                    index++;
+
+                wordCount++;
+
+                // skip whitespace until next word
+                while (index < text.Length && char.IsWhiteSpace(text[index]))
+                    index++;
             }
-            Console.WriteLine(lineCounter);
-        }
-    }
-    public void WordCounter()
-    {
 
-        StreamReader reader = new StreamReader("Beowulf.txt");
-        string script = reader.ReadToEnd();
+            Console.WriteLine("The file has " + wordCount);
+            return wordCount;
 
-        var text = script.Trim();
-        int wordCount = 0, index = 0;
-
-        while (index < text.Length)
-        {
-            // check if current char is part of a word
-            while (index < text.Length && !char.IsWhiteSpace(text[index]))
-                index++;
-
-            wordCount++;
-
-            // skip whitespace until next word
-            while (index < text.Length && char.IsWhiteSpace(text[index]))
-                index++;
         }
 
-        Console.WriteLine(wordCount);
     }
 }
+    
+   
