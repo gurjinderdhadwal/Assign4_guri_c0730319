@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Assign4_guri_c0730319
@@ -11,7 +12,7 @@ namespace Assign4_guri_c0730319
     class Program
     {
         ArrayList Beowulf;
-        private char[] separator;
+
 
         static void Main(string[] args)
         {
@@ -19,7 +20,7 @@ namespace Assign4_guri_c0730319
 
             p.ReadTextFiles();
             p.Beowulf = new ArrayList();
-            p.TotalWords();
+
             Console.ReadLine();
         }
         public void Run()
@@ -62,34 +63,41 @@ namespace Assign4_guri_c0730319
 
         }
 
-
-        public long TotalWords()
+    }
+    public void CountLinesReader()
+    {
+        long lineCounter = 0;
+        using (StreamReader fil = new StreamReader("Beowulf.txt"))
         {
-
-            StreamReader reader = new StreamReader("Beowulf.txt");
-            string script = reader.ReadToEnd();
-
-            var text = script.Trim();
-            long wordCount = 0;
-            int index = 0;
-
-            while (index < text.Length)
+            while (fil.ReadLine() != null)
             {
-                // check if current char is part of a word
-                while (index < text.Length && !char.IsWhiteSpace(text[index]))
-                    index++;
-
-                wordCount++;
-
-                // skip whitespace until next word
-                while (index < text.Length && char.IsWhiteSpace(text[index]))
-                    index++;
+                lineCounter++;
             }
+            Console.WriteLine(lineCounter);
+        }
+    }
+    public void WordCounter()
+    {
 
-            Console.WriteLine("The file has " + wordCount);
-            return wordCount;
+        StreamReader reader = new StreamReader("Beowulf.txt");
+        string script = reader.ReadToEnd();
 
+        var text = script.Trim();
+        int wordCount = 0, index = 0;
+
+        while (index < text.Length)
+        {
+            // check if current char is part of a word
+            while (index < text.Length && !char.IsWhiteSpace(text[index]))
+                index++;
+
+            wordCount++;
+
+            // skip whitespace until next word
+            while (index < text.Length && char.IsWhiteSpace(text[index]))
+                index++;
         }
 
+        Console.WriteLine(wordCount);
     }
 }
